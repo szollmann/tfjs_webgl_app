@@ -371,8 +371,8 @@ async function startWebGL()
     init_touch_event (canvas);
     init_gui ();
 
-    const camtex = GLUtil.create_camera_texture (gl);
-    //const camtex = GLUtil.create_video_texture (gl, "pexels.mp4");
+    //const camtex = GLUtil.create_camera_texture (gl);
+    const camtex = GLUtil.create_video_texture (gl, "https://www.youtube.com/watch?v=AMSUpCLFoTk");
     const imgtex = GLUtil.create_image_texture2 (gl, "pexels.jpg");
 
     let win_w = canvas.clientWidth;
@@ -414,11 +414,11 @@ async function startWebGL()
         let src_w = imgtex.image.width;
         let src_h = imgtex.image.height;
         let texid = imgtex.texid;
-        if (GLUtil.is_camera_ready(camtex))
+        if (GLUtil.is_video_ready(camtex))
         {
             if (s_gui_prop.pause_camera == false)
             {
-                GLUtil.update_camera_texture (gl, camtex);
+                GLUtil.update_video_texture (gl, camtex);
                 need_invoke_tflite = true;
             }
             src_w = camtex.video.videoWidth;
